@@ -1,6 +1,7 @@
 mod error;
 mod prelude;
 mod tank;
+mod bullet;
 
 use termion::{
     event::{
