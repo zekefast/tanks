@@ -3,7 +3,8 @@ use std::io::{StdoutLock, Write};
 use termion::color::{Fg, Reset};
 use termion::color;
 use unicode_segmentation::UnicodeSegmentation;
-use crate::{Boundary, Bullet, Color, Direction, Position, TANK_DOWN, TANK_LEFT, TANK_RIGHT, TANK_UP, TankPicture, Viewport};
+use crate::{Boundary, Color, Direction, Position, TANK_DOWN, TANK_LEFT, TANK_RIGHT, TANK_UP, TankPicture, Viewport};
+use crate::bullet::Bullet;
 
 #[derive(PartialEq)]
 pub(crate) struct Tank {
