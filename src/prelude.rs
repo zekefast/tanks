@@ -7,6 +7,7 @@ pub(crate) use crate::{
     color::Color,
     direction::Direction,
     game::Game,
+    game_state::GameState,
     tank::Tank,
     viewport::Viewport,
 };

@@ -1,5 +1,7 @@
-use crate::GameState;
-use crate::prelude::Tank;
+use crate::prelude::{
+    GameState,
+    Tank,
+};
 
 pub(crate) struct Game {
     pub(crate) state: GameState,
