@@ -138,22 +138,6 @@ impl GameState {
     }
 }
 
-struct Game {
-    state: GameState,
-}
-
-impl Game {
-    fn new(state: GameState) -> Game {
-        Game {
-            state,
-        }
-    }
-
-    fn add_tank(&mut self, tank: Tank) {
-        self.state.tanks.push(tank);
-    }
-}
-
 fn main() {
     println!("{}", BANNER);
     thread::sleep(time::Duration::from_millis(5000));
