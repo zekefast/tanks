@@ -3,6 +3,7 @@ mod prelude;
 mod direction;
 mod tank;
 mod bullet;
+mod game;
 
 use termion::{
     event::{
