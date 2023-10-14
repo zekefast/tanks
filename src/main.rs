@@ -3,27 +3,24 @@ mod prelude;
 mod tank;
 
 use termion::{
-    color::{
-        self, Fg, Reset
-    }, 
     event::{
         Event, Key, parse_event
-    }, 
+    },
     raw::{
         IntoRawMode, RawTerminal
     }
 };
 use std::{
     io::{
-        StdoutLock, 
-        Write, 
-        Read, 
-        stdout
+        Read,
+        stdout,
+        StdoutLock,
+        Write
     },
-    thread, 
+    thread,
     time
 };
-use unicode_segmentation::UnicodeSegmentation;
+use crate::prelude::*;
 
 type TankPicture = [&'static str; 3];
 
@@ -116,126 +113,6 @@ enum Color {
     LightRed,
 }
 
-#[derive(PartialEq)]
-struct Tank {
-    position: Position,
-    direction: Direction,
-    color: Color,
-}
-
-impl Tank {
-    fn new(position: Position, direction: Direction, color: Color) -> Tank {
-        Tank {
-            position,
-            direction,
-            color,
-        }
-    }
-
-    fn width() -> u16 {
-        TANK_UP.first().unwrap().graphemes(true).count() as u16
-    }
-
-    fn height() -> u16 {
-        TANK_UP.len() as u16
-    }
-
-    fn boundary(position: Position) -> Boundary {
-        (
-            (position.0 - Self::width()/2, position.1 - Self::height()/2),
-            (position.0 + Self::width()/2, position.1 + Self::height()/2)
-        )
-    }
-
-    fn print(&self, stdout: &mut RawTerminal<StdoutLock>) {
-        for (index, &s) in self.get_tank_picture().iter().enumerate() {
-            let position = termion::cursor::Goto(
-                self.position.0 - Self::width()/2,
-                self.position.1 - Self::height()/2 + index as u16
-            );
-
-            match self.color {
-                Color::LightBlue => write!(stdout, "{position}{color}{}", s,
-                    color = Fg(color::LightBlue),
-                    position = position
-                ),
-                Color::LightRed => write!(stdout, "{position}{color}{}", s,
-                    color = Fg(color::LightRed),
-                    position = position
-                ),
-            }.unwrap();
-        }
-
-        write!(stdout, "{}", Fg(Reset)).unwrap();
-    }   
-
-    fn erase(&self, stdout: &mut RawTerminal<StdoutLock>) {
-        for index in 0..Self::height() {
-            write!(stdout, "{position}{:width$}",
-                " ",
-                width = Self::width() as usize,
-                position = termion::cursor::Goto(
-                    self.position.0  - Self::width()/2,
-                    self.position.1  - Self::height()/2 + index as u16
-                )
-            ).unwrap();
-        }
-    }
-
-    fn get_tank_picture(&self) -> TankPicture {
-        match self.direction {
-            Direction::Up => TANK_UP,
-            Direction::Down => TANK_DOWN,
-            Direction::Left => TANK_LEFT,
-            Direction::Right => TANK_RIGHT,
-        }
-    }
-
-    fn r#move(&mut self, position: Position, stdout: &mut RawTerminal<StdoutLock>) {
-        self.erase(stdout);
-
-        self.position = position;
-
-        self.print(stdout);
-    }
-
-    fn go(&self, viewport: &Viewport) -> Position {
-        match self.direction {
-            Direction::Up if self.position.1 > 2 =>
-                (self.position.0, self.position.1 - 1),
-            Direction::Down if self.position.1 < viewport.height - Self::height()/2 => 
-                (self.position.0, self.position.1 + 1),
-            Direction::Left if self.position.0 > 2 => 
-                (self.position.0 - 1, self.position.1),
-            Direction::Right if self.position.0 < viewport.width - Self::width()/2 => 
-                (self.position.0 + 1, self.position.1),
-
-            _ => self.position
-        }
-    }
-
-    fn turn(&mut self, direction: Direction, stdout: &mut RawTerminal<StdoutLock>) {
-        self.direction = direction;
-
-        self.print(stdout);
-    }
-
-    fn is_direction(&self, direction: Direction) -> bool {
-        self.direction == direction
-    }
-
-    fn shoot(&self, bullets: &mut Vec<Bullet>) {
-        bullets.push(Bullet::new(
-            match self.direction {
-                Direction::Up => (self.position.0, self.position.1 - Self::height()/2 - 1),
-                Direction::Down => (self.position.0, self.position.1 + Self::height()/2 + 1),
-                Direction::Left => (self.position.0 - Self::width()/2 - 1, self.position.1),
-                Direction::Right => (self.position.0 + Self::width()/2 + 1, self.position.1),
-            },
-            self.direction,
-        ));
-    }
-}
 struct Viewport {
     width: u16,
     height: u16,
