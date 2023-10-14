@@ -93,8 +93,6 @@ const TANK_LEFT: TankPicture = [
     // "  ╚═════╝",
 ];
 
-const BULLET: char = '*';
-
 #[derive(PartialEq, Clone, Copy)]
 enum Direction {
     Up,

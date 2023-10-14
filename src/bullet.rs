@@ -1,6 +1,10 @@
 use termion::raw::RawTerminal;
 use std::io::{StdoutLock, Write};
-use crate::{BULLET, Direction, Position, Viewport};
+use crate::{Direction, Position, Viewport};
+
+
+const BULLET: char = '*';
+
 
 pub(crate) struct Bullet {
     pub(crate) position: Position,
