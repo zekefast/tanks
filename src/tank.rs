@@ -3,8 +3,11 @@ use std::io::{StdoutLock, Write};
 use termion::color::{Fg, Reset};
 use termion::color;
 use unicode_segmentation::UnicodeSegmentation;
-use crate::{Boundary, Color, Direction, Position, Viewport};
-use crate::prelude::Bullet;
+use crate::{Boundary, Color, Position, Viewport};
+use crate::prelude::{
+    Bullet,
+    Direction,
+};
 
 
 pub(crate) type TankPicture = [&'static str; 3];

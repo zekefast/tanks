@@ -1,6 +1,7 @@
 use termion::raw::RawTerminal;
 use std::io::{StdoutLock, Write};
-use crate::{Direction, Position, Viewport};
+use crate::{Position, Viewport};
+use crate::prelude::Direction;
 
 
 const BULLET: char = '*';

@@ -53,14 +53,6 @@ const BANNER: &str = r#"
 
 "#;
 
-#[derive(PartialEq, Clone, Copy)]
-enum Direction {
-    Up,
-    Down,
-    Left,
-    Right,
-}
-
 type Position = (u16, u16);
 type Boundary = (Position, Position);
 
