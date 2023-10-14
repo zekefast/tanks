@@ -8,6 +8,9 @@ mod game;
 mod game_state;
 mod viewport;
 
+use bevy::prelude::{
+    App,
+};
 use termion::{
     event::{
         Event, Key, parse_event
@@ -55,6 +58,9 @@ const BANNER: &str = r#"
 "#;
 
 fn main() {
+    App::new()
+        .run();
+
     println!("{}", BANNER);
     thread::sleep(time::Duration::from_millis(5000));
     let mut stdin = termion::async_stdin().bytes();
