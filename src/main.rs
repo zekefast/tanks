@@ -1,5 +1,6 @@
 mod error;
 mod prelude;
+mod color;
 mod direction;
 mod tank;
 mod bullet;
