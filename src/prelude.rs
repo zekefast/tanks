@@ -6,6 +6,5 @@ pub(crate) use crate::{
     bullet::Bullet,
     tank::{
         Tank,
-        TankPicture,
     },
 };
