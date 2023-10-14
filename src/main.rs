@@ -21,9 +21,8 @@ use std::{
     thread,
     time
 };
+use tank::TankPicture;
 use crate::prelude::*;
-
-type TankPicture = [&'static str; 3];
 
 const BANNER: &str = r#"
                                                      _..----.._
