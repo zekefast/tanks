@@ -56,8 +56,6 @@ const BANNER: &str = r#"
 
 "#;
 
-type Boundary = (Position, Position);
-
 struct GameState {
     viewport: Viewport,
     tanks: Vec<Tank>,

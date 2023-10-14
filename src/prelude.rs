@@ -12,3 +12,5 @@ pub(crate) use crate::{
 };
 
 pub(crate) type Position = (u16, u16);
+
+pub(crate) type Boundary = (Position, Position);
