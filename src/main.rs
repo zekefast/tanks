@@ -5,6 +5,7 @@ mod direction;
 mod tank;
 mod bullet;
 mod game;
+mod game_state;
 mod viewport;
 
 use termion::{
