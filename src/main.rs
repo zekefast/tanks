@@ -1,3 +1,6 @@
+mod error;
+mod prelude;
+
 use termion::{
     color::{
         self, Fg, Reset
