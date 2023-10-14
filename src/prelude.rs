@@ -4,5 +4,8 @@ pub(crate) type Result<T> = core::result::Result<T, Error>;
 
 pub(crate) use crate::{
     bullet::Bullet,
-    tank::Tank,
+    tank::{
+        Tank,
+        TankPicture,
+    },
 };
