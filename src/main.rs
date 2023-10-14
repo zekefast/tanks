@@ -56,7 +56,6 @@ const BANNER: &str = r#"
 
 "#;
 
-type Position = (u16, u16);
 type Boundary = (Position, Position);
 
 struct GameState {

@@ -10,3 +10,5 @@ pub(crate) use crate::{
     tank::Tank,
     viewport::Viewport,
 };
+
+pub(crate) type Position = (u16, u16);

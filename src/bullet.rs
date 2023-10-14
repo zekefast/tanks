@@ -1,8 +1,8 @@
 use termion::raw::RawTerminal;
 use std::io::{StdoutLock, Write};
-use crate::Position;
 use crate::prelude::{
     Direction,
+    Position,
     Viewport,
 };
 
