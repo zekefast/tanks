@@ -59,12 +59,6 @@ const BANNER: &str = r#"
 type Position = (u16, u16);
 type Boundary = (Position, Position);
 
-#[derive(PartialEq)]
-enum Color {
-    LightBlue,
-    LightRed,
-}
-
 struct GameState {
     viewport: Viewport,
     tanks: Vec<Tank>,
