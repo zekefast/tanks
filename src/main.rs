@@ -64,27 +64,6 @@ enum Color {
     LightRed,
 }
 
-struct Viewport {
-    width: u16,
-    height: u16,
-}
-
-impl Viewport {
-    fn new(width: u16, height: u16) -> Viewport {
-        Viewport {
-            width,
-            height,
-        }
-    }
-
-    fn from_terminal() -> Viewport {
-        let (width, height) = termion::terminal_size()
-            .expect("Can't read terminal size.");
-
-        Viewport::new(width, height)
-    }
-}
-
 struct GameState {
     viewport: Viewport,
     tanks: Vec<Tank>,

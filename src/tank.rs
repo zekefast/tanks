@@ -3,10 +3,11 @@ use std::io::{StdoutLock, Write};
 use termion::color::{Fg, Reset};
 use termion::color;
 use unicode_segmentation::UnicodeSegmentation;
-use crate::{Boundary, Color, Position, Viewport};
+use crate::{Boundary, Color, Position};
 use crate::prelude::{
     Bullet,
     Direction,
+    Viewport,
 };
 
 
