@@ -4,6 +4,7 @@ mod direction;
 mod tank;
 mod bullet;
 mod game;
+mod viewport;
 
 use termion::{
     event::{
